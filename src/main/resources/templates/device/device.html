@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<header th:replace="fragments :: header"></header>
+
+<h4>Device list:</h4>
+<div class="col-6">
+    <a class="btn btn-success" th:href="@{'/deviceView/add'}">Add</a>
+    <h3 th:unless="${devices} and ${devices.size()}">There are no devices!</h3>
+    <table th:if="${devices.size()>0}" class="table table-hover">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Endpoint</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <tr th:each="device : ${devices}">
+            <td th:text="${device.deviceId}"></td>
+            <td th:text="${device.deviceName}"></td>
+            <td th:text="${device.deviceLocation}"></td>
+            <td th:text="${device.deviceType}"></td>
+            <td th:text="${device.endPoint}"></td>
+
+            <td><a class="btn btn-info"
+                   th:href="@{'/deviceView/edit/'+${device.deviceId}}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/deviceView/delete/'+${device.deviceId}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<footer th:replace="fragments :: footer"></footer>
+</html>
+</body>

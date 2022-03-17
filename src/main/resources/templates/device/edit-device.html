@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<header th:replace="fragments :: header"></header>
+
+<h4>Employee edit:</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/deviceView/update/{id}(id=${device.deviceId})}" th:object="${device}" method="post">
+        <div class="form-group">
+            <label for="deviceName">Name:</label>
+            <input class="form-control" type="text" th:field="*{deviceName}" placeholder="Address" id="deviceName">
+
+            <label for="deviceLocation">Location:</label>
+            <input class="form-control" type="text" th:field="*{deviceLocation}" placeholder="DeviceLocation" id="deviceLocation">
+
+            <label for="deviceType">Type:</label>
+            <input class="form-control" type="text" th:field="*{deviceType}" placeholder="DeviceType" id="deviceType">
+
+            <label for="endPoint">Endpoint:</label>
+            <input class="form-control" type="text" th:field="*{endPoint}" placeholder="EndPoint" id="endPoint">
+            
+        </div>
+        <button type="submit" class="btn btn-primary">Update device</button>
+    </form>
+</div>
+</body>
+
+<footer th:replace="fragments :: footer"></footer>
+</html>
