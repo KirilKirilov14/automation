@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<header th:replace="fragments :: header"></header>
+
+<h4>Automation Rule list:</h4>
+<div class="col-6">
+    <a class="btn btn-success" th:href="@{'/automationRuleView/add'}">Add</a>
+    <h3 th:unless="${automationRules} and ${automationRules.size()}">There are no Automation Rules!</h3>
+    <table th:if="${automationRules.size()>0}" class="table table-hover">
+
+       <!-- <th>Automation rule id</th>-->
+        <th>Sensor min value trigger</th>
+        <th>Sensor max value trigger</th>
+        <th>Min trigger endpoint</th>
+        <th>Max trigger endpoint</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <tr th:each="automationRule : ${automationRules}">
+          <!--  <td th:text="${automationRule.automationRuleId}"></td>-->
+            <td th:text="${automationRule.sensorMinValueTrigger}"></td>
+            <td th:text="${automationRule.sensorMaxValueTrigger}"></td>
+            <td th:text="${automationRule.minTriggerEndpoint}"></td>
+            <td th:text="${automationRule.maxTriggerEndpoint}"></td>
+
+
+            <td><a class="btn btn-info"
+                   th:href="@{'/automationRuleView/edit/'+${automationRule.automationRuleId}}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/automationRuleView/delete/'+${automationRule.automationRuleId}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<footer th:replace="fragments :: footer"></footer>
+</html>
+</body>

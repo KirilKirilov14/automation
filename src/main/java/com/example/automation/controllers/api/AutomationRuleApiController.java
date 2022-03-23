@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/automationRule")
-public class AutomationRuleController {
-
-    
+public class AutomationRuleApiController {
 private final AutomationRuleService automationRuleService;
 
-    public AutomationRuleController(AutomationRuleService automationRuleService) {
+    public AutomationRuleApiController(AutomationRuleService automationRuleService) {
         this.automationRuleService = automationRuleService;
     }
 
@@ -22,7 +20,7 @@ private final AutomationRuleService automationRuleService;
 
         @GetMapping
         public List<AutomationRule> getAutomationRule() {
-            return automationRuleService.getAutomationRulesService();
+            return automationRuleService.getAutomationRuleService();
         }
 
         @RequestMapping("/{id}")
@@ -32,8 +30,8 @@ private final AutomationRuleService automationRuleService;
 
         @PostMapping
         public AutomationRule createAutomationRule(@RequestBody AutomationRule automationRule) {
+            System.out.println(automationRule);
             return automationRuleService.createAutomationRule(automationRule);
-
         }
 
 
@@ -44,7 +42,7 @@ private final AutomationRuleService automationRuleService;
 
         @DeleteMapping(value = "/delete/{id}")
         public void deleteAutomationRule(@PathVariable("id") int id) {
-            automationRuleService.deleteAutomationRule(id);
+            automationRuleService.deleteAutomationRuleService(id);
         }
     }
 

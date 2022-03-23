@@ -43,13 +43,12 @@ public class DeviceViewController {
     public String showCreateDeviceForm(Model model) {
          Device device=new Device();
         model.addAttribute("device",device);
-        System.out.println("Something");
         return "/device/create-device";
     }
 
     @PostMapping("/create")
     public String createDevice(Model model, Device device) {
-        User userId=userService.getUserService(1);  //TODO-check with hristina about session user
+        User userId=userService.getUserService(1);
         device.setUserId(userId);
         deviceService.createDevice(device);
         return "redirect:/deviceView";

@@ -19,8 +19,8 @@ public class SensorApiController {
     }
 
     @GetMapping
-    public List<Sensor> getSensor() {
-        return sensorService.getSensorService();
+    public List<Sensor> getSensors() {
+        return sensorService.getSensors();
     }
 
     @RequestMapping("/{id}")

@@ -6,22 +6,10 @@ import com.example.automation.data.entity.AutomationRule;
 import java.util.List;
 
 public interface AutomationRuleService {
-    List<AutomationRule> getAutomationRulesService();
-    AutomationRule getAutomationRulesService(int id);
 
     List<AutomationRule> getAutomationRuleService();
-
     AutomationRule getAutomationRuleService(int id);
-
-    AutomationRule createAutomationRules(AutomationRule automationRules);
-
-    AutomationRule createAutomationRule(AutomationRule automationRules);
-
-    AutomationRule updateAutomationRules(AutomationRule automationRules, int id);
-
-    AutomationRule updateAutomationRule(AutomationRule automationRules, int id);
-
-    void deleteAutomationRules(int id);
-
-    void deleteAutomationRule(int id);
+    AutomationRule createAutomationRule(AutomationRule automationRule);
+    AutomationRule updateAutomationRule(AutomationRule automationRule, int id);
+    void deleteAutomationRuleService(int id);
 }

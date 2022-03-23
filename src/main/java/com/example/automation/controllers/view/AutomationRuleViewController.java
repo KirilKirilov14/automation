@@ -23,13 +23,12 @@ public class AutomationRuleViewController {
     public AutomationRuleViewController(AutomationRuleService automationRuleService, SensorService sensorService) {
         this.automationRuleService = automationRuleService;
         this.sensorService = sensorService;
-
     }
 
     @GetMapping
     public String getAutomationRule(Model model) {
-        final List<AutomationRule> automationRule = automationRuleService.getAutomationRuleService();
-        model.addAttribute("automationRule", automationRule);
+        final List<AutomationRule> automationRules = automationRuleService.getAutomationRuleService();
+        model.addAttribute("automationRules", automationRules);
         return "/automationRule/automationRule";
     }
 
@@ -48,21 +47,20 @@ public class AutomationRuleViewController {
     public String showCreateAutomationRuleForm(Model model) {
         AutomationRule automationRule=new AutomationRule();
         model.addAttribute("automationRule",automationRule);
-        System.out.println("Something");
+        model.addAttribute("sensors",sensorService.getSensors());
         return "/automationRule/create-automationRule";
     }
 
     @PostMapping("/create")
     public String createAutomationRule(Model model, AutomationRule automationRule) {
-        Sensor sensorId=sensorService.getSensorService(1);  //TODO-check with hristina about session user
-        automationRule.setSensorId(sensorId);
+        System.out.println("Creating automation rule" + " " +automationRule);
         automationRuleService.createAutomationRule(automationRule);
         return "redirect:/automationRuleView";
     }
 
     @GetMapping("/delete/{id}")
     public String processProgramForm(@PathVariable int id) {
-        automationRuleService.deleteAutomationRule(id);
+        automationRuleService.deleteAutomationRuleService(id);
         return "redirect:/automationRuleView";
     }
 }

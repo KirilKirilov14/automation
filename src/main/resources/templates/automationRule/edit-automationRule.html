@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<header th:replace="fragments :: header"></header>
+
+<h4>Employee edit:</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/automationRuleView/update/{id}(id=${automationRule.automationRuleId})}"
+          th:object="${automationRule}" method="post">
+        <div class="form-group">
+
+           <!-- <label for="automationRuleId">AutomationRuleId:</label>
+            <input class="form-control" type="text" th:field="*{automationRuleName}" placeholder="AutomationRuleId" id="automationRuleId">-->
+
+            <label for="sensorMinValueTrigger">SensorMinValueTrigger:</label>
+            <input class="form-control" type="text" th:field="*{automationRuleLocation}" placeholder="SensorMinValueTrigger" id="sensorMinValueTrigger">
+
+            <label for="sensorMaxValueTrigger">SensorMaxValueTrigger:</label>
+            <input class="form-control" type="text" th:field="*{automationRuleLocation}" placeholder="SensorMaxValueTrigger" id="sensorMaxValueTrigger">
+
+            <label for="minTriggerEndpoint">MinTriggerEndpoint:</label>
+            <input class="form-control" type="text" th:field="*{automationRuleType}" placeholder="<inTriggerEndpoint" id="minTriggerEndpoint">
+
+            <label for="maxTriggerEndpoint">MaxTriggerEndpoint:</label>
+            <input class="form-control" type="text" th:field="*{automationRuleType}" placeholder="<MaxTriggerEndpoint" id="maxTriggerEndpoint">
+
+
+
+        </div>
+        <button type="submit" class="btn btn-primary">Update automationRule</button>
+    </form>
+</div>
+</body>
+
+<footer th:replace="fragments :: footer"></footer>
+</html>

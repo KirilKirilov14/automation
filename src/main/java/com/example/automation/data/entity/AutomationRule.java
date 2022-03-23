@@ -5,6 +5,7 @@ package com.example.automation.data.entity;/*
  */
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -23,7 +24,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author pc
  */
 @Entity
@@ -66,6 +66,7 @@ public class AutomationRule implements Serializable {
     private String maxTriggerEndpoint;
     @JoinColumn(name = "sensor_id", referencedColumnName = "sensor_id")
     @ManyToOne(optional = false)
+    @JsonIgnoreProperties("")
     private Sensor sensorId;
 
     public AutomationRule() {
@@ -87,41 +88,23 @@ public class AutomationRule implements Serializable {
         return automationRuleId;
     }
 
-    public void setAutomationRuleId(Integer automationRuleId) {
-        this.automationRuleId = automationRuleId;
-    }
-
     public String getSensorMaxValueTrigger() {
         return sensorMaxValueTrigger;
-    }
-
-    public void setSensorMaxValueTrigger(String sensorMaxValueTrigger) {
-        this.sensorMaxValueTrigger = sensorMaxValueTrigger;
     }
 
     public String getMinTriggerEndpoint() {
         return minTriggerEndpoint;
     }
 
-    public void setMinTriggerEndpoint(String minTriggerEndpoint) {
-        this.minTriggerEndpoint = minTriggerEndpoint;
-    }
-
     public String getSensorMinValueTrigger() {
         return sensorMinValueTrigger;
-    }
-
-    public void setSensorMinValueTrigger(String sensorMinValueTrigger) {
-        this.sensorMinValueTrigger = sensorMinValueTrigger;
     }
 
     public String getMaxTriggerEndpoint() {
         return maxTriggerEndpoint;
     }
 
-    public void setMaxTriggerEndpoint(String maxTriggerEndpoint) {
-        this.maxTriggerEndpoint = maxTriggerEndpoint;
-    }
+
 
     public Sensor getSensorId() {
         return sensorId;
@@ -153,7 +136,13 @@ public class AutomationRule implements Serializable {
 
     @Override
     public String toString() {
-        return "com.automation.data.AutomationRule[ automationRuleId=" + automationRuleId + " ]";
+        return "AutomationRule{" +
+                "automationRuleId=" + automationRuleId +
+                ", sensorMaxValueTrigger='" + sensorMaxValueTrigger + '\'' +
+                ", minTriggerEndpoint='" + minTriggerEndpoint + '\'' +
+                ", sensorMinValueTrigger='" + sensorMinValueTrigger + '\'' +
+                ", maxTriggerEndpoint='" + maxTriggerEndpoint + '\'' +
+                ", sensorId=" + sensorId +
+                '}';
     }
-
 }

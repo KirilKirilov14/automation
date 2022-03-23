@@ -19,7 +19,7 @@ public class SensorImplementation implements SensorService {
     }
 
     @Override
-    public List<Sensor> getSensorService() {
+    public List<Sensor> getSensors() {
         return sensorsRepository.findAll();
     }
 

@@ -14,16 +14,6 @@ private final AutomationRuleRepository automationRuleRepository;
     }
 
     @Override
-    public List<AutomationRule> getAutomationRulesService() {
-        return null;
-    }
-
-    @Override
-    public AutomationRule getAutomationRulesService(int id) {
-        return null;
-    }
-
-    @Override
     public List<AutomationRule> getAutomationRuleService() {
         return automationRuleRepository.findAll();
     }
@@ -35,18 +25,8 @@ private final AutomationRuleRepository automationRuleRepository;
     }
 
     @Override
-    public AutomationRule createAutomationRules(AutomationRule automationRules) {
-        return null;
-    }
-
-    @Override
-    public AutomationRule createAutomationRule(AutomationRule automationRules) {
-        return null;
-    }
-
-    @Override
-    public AutomationRule updateAutomationRules(AutomationRule automationRules, int id) {
-        return null;
+    public AutomationRule createAutomationRule(AutomationRule automationRule) {
+        return automationRuleRepository.save(automationRule);
     }
 
     @Override
@@ -55,12 +35,7 @@ private final AutomationRuleRepository automationRuleRepository;
     }
 
     @Override
-    public void deleteAutomationRules(int id) {
-
-    }
-
-    @Override
-    public void deleteAutomationRule(int id) {
+    public void deleteAutomationRuleService(int id) {
 
     }
 
