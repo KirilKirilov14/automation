@@ -58,10 +58,6 @@ public class SensorType implements Serializable {
     @Column(name = "sensor_data_type")
     private String sensorDataType;
 
- /*   @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sensorTypeId") //sensorTypeId
-    private List<Sensor> sensorList;*/
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sensorTypeId")
     @JsonIgnore
     private List<Sensor> sensorList;

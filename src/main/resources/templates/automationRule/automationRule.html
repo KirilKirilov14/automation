@@ -11,7 +11,7 @@
     <h3 th:unless="${automationRules} and ${automationRules.size()}">There are no Automation Rules!</h3>
     <table th:if="${automationRules.size()>0}" class="table table-hover">
 
-       <!-- <th>Automation rule id</th>-->
+        <th>id</th>
         <th>Sensor min value trigger</th>
         <th>Sensor max value trigger</th>
         <th>Min trigger endpoint</th>
@@ -19,7 +19,8 @@
         <th>Edit</th>
         <th>Delete</th>
         <tr th:each="automationRule : ${automationRules}">
-          <!--  <td th:text="${automationRule.automationRuleId}"></td>-->
+
+            <td th:text="${automationRule.automationRuleId}"></td>
             <td th:text="${automationRule.sensorMinValueTrigger}"></td>
             <td th:text="${automationRule.sensorMaxValueTrigger}"></td>
             <td th:text="${automationRule.minTriggerEndpoint}"></td>

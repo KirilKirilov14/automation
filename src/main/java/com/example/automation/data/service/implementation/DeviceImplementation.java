@@ -38,13 +38,16 @@ public class DeviceImplementation implements DeviceService {
     @Override
     public Device updateDevice(Device device, int id) {
         device.setDeviceId(id);
-
         return devicesRepository.save(device);
     }
 
     @Override
     public void deleteDeviceService(int id) {
         devicesRepository.deleteById(id);
+    }
+
+    public void processDBData(){
+
     }
 
 }

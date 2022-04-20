@@ -10,6 +10,6 @@ public interface LogService {
         Log getLogService(int id);
         Log createLog(Log log);
         Log updateLog(Log log, int id);
-        void deleteLog(int id);
+        void deleteLogService(int id);
 
 }

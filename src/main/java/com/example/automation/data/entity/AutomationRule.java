@@ -64,6 +64,10 @@ public class AutomationRule implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "max_trigger_endpoint")
     private String maxTriggerEndpoint;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "automation_rule_active")
+    private Boolean automationRuleActive;
     @JoinColumn(name = "sensor_id", referencedColumnName = "sensor_id")
     @ManyToOne(optional = false)
     @JsonIgnoreProperties("")
@@ -76,12 +80,14 @@ public class AutomationRule implements Serializable {
         this.automationRuleId = automationRuleId;
     }
 
-    public AutomationRule(Integer automationRuleId, String sensorMaxValueTrigger, String minTriggerEndpoint, String sensorMinValueTrigger, String maxTriggerEndpoint) {
+    public AutomationRule(Integer automationRuleId, String sensorMaxValueTrigger, String minTriggerEndpoint, String sensorMinValueTrigger, String maxTriggerEndpoint,
+    Boolean automationRuleActive) {
         this.automationRuleId = automationRuleId;
         this.sensorMaxValueTrigger = sensorMaxValueTrigger;
         this.minTriggerEndpoint = minTriggerEndpoint;
         this.sensorMinValueTrigger = sensorMinValueTrigger;
         this.maxTriggerEndpoint = maxTriggerEndpoint;
+        this.automationRuleActive = automationRuleActive;
     }
 
     public Integer getAutomationRuleId() {
@@ -104,7 +110,33 @@ public class AutomationRule implements Serializable {
         return maxTriggerEndpoint;
     }
 
+    public Boolean getAutomationRuleActive() {
+        return automationRuleActive;
+    }
 
+    public void setAutomationRuleActive(Boolean automationRuleActive) {
+        this.automationRuleActive = automationRuleActive;
+    }
+
+    public void setAutomationRuleId(Integer automationRuleId) {
+        this.automationRuleId = automationRuleId;
+    }
+
+    public void setSensorMaxValueTrigger(String sensorMaxValueTrigger) {
+        this.sensorMaxValueTrigger = sensorMaxValueTrigger;
+    }
+
+    public void setMinTriggerEndpoint(String minTriggerEndpoint) {
+        this.minTriggerEndpoint = minTriggerEndpoint;
+    }
+
+    public void setSensorMinValueTrigger(String sensorMinValueTrigger) {
+        this.sensorMinValueTrigger = sensorMinValueTrigger;
+    }
+
+    public void setMaxTriggerEndpoint(String maxTriggerEndpoint) {
+        this.maxTriggerEndpoint = maxTriggerEndpoint;
+    }
 
     public Sensor getSensorId() {
         return sensorId;
@@ -142,6 +174,7 @@ public class AutomationRule implements Serializable {
                 ", minTriggerEndpoint='" + minTriggerEndpoint + '\'' +
                 ", sensorMinValueTrigger='" + sensorMinValueTrigger + '\'' +
                 ", maxTriggerEndpoint='" + maxTriggerEndpoint + '\'' +
+                ", automationRuleActive=" + automationRuleActive +
                 ", sensorId=" + sensorId +
                 '}';
     }

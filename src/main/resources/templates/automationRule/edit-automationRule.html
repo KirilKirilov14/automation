@@ -10,22 +10,26 @@
     <form action="#" th:action="@{/automationRuleView/update/{id}(id=${automationRule.automationRuleId})}"
           th:object="${automationRule}" method="post">
         <div class="form-group">
-
-           <!-- <label for="automationRuleId">AutomationRuleId:</label>
+<!--            <label for="automationRuleId">AutomationRuleId:</label>
             <input class="form-control" type="text" th:field="*{automationRuleName}" placeholder="AutomationRuleId" id="automationRuleId">-->
 
+            <select class="form-control" th:field="${automationRule.sensorId}" id="sensorId">
+                <option value="">Select sensor id</option>
+                <option th:each="sensor : ${sensors}" th:value="${sensor.sensorId}"
+                        th:text="${sensor.sensorId}"></option>
+            </select>
+
             <label for="sensorMinValueTrigger">SensorMinValueTrigger:</label>
-            <input class="form-control" type="text" th:field="*{automationRuleLocation}" placeholder="SensorMinValueTrigger" id="sensorMinValueTrigger">
+            <input class="form-control" type="text" th:field="*{sensorMinValueTrigger}" placeholder="SensorMinValueTrigger" id="sensorMinValueTrigger">
 
             <label for="sensorMaxValueTrigger">SensorMaxValueTrigger:</label>
-            <input class="form-control" type="text" th:field="*{automationRuleLocation}" placeholder="SensorMaxValueTrigger" id="sensorMaxValueTrigger">
+            <input class="form-control" type="text" th:field="*{sensorMaxValueTrigger}" placeholder="SensorMaxValueTrigger" id="sensorMaxValueTrigger">
 
             <label for="minTriggerEndpoint">MinTriggerEndpoint:</label>
-            <input class="form-control" type="text" th:field="*{automationRuleType}" placeholder="<inTriggerEndpoint" id="minTriggerEndpoint">
+            <input class="form-control" type="text" th:field="*{minTriggerEndpoint}" placeholder="MinTriggerEndpoint" id="minTriggerEndpoint">
 
             <label for="maxTriggerEndpoint">MaxTriggerEndpoint:</label>
-            <input class="form-control" type="text" th:field="*{automationRuleType}" placeholder="<MaxTriggerEndpoint" id="maxTriggerEndpoint">
-
+            <input class="form-control" type="text" th:field="*{maxTriggerEndpoint}" placeholder="MaxTriggerEndpoint" id="maxTriggerEndpoint">
 
 
         </div>

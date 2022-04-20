@@ -1,7 +1,6 @@
 package com.example.automation.controllers.view;
 
 import com.example.automation.data.entity.AutomationRule;
-import com.example.automation.data.entity.Sensor;
 import com.example.automation.data.service.AutomationRuleService;
 import com.example.automation.data.service.SensorService;
 import org.springframework.stereotype.Controller;
@@ -35,6 +34,7 @@ public class AutomationRuleViewController {
     @GetMapping("/edit/{id}")
     public String showEditAutomationRule(Model model, @PathVariable Integer id) {
         model.addAttribute("automationRule", automationRuleService.getAutomationRuleService(id));
+        model.addAttribute("sensors",sensorService.getSensors());
         return "/automationRule/edit-automationRule";
     }
 

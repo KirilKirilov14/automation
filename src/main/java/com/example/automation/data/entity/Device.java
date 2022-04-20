@@ -173,7 +173,14 @@ public class Device implements Serializable {
 
     @Override
     public String toString() {
-        return "com.automation.data.Device[ deviceId=" + deviceId + " ]";
+        return "Device{" +
+                "deviceId=" + deviceId +
+                ", deviceName='" + deviceName + '\'' +
+                ", deviceLocation='" + deviceLocation + '\'' +
+                ", deviceType='" + deviceType + '\'' +
+                ", endPoint='" + endPoint + '\'' +
+                ", sensorList=" + sensorList +
+                ", userId=" + userId +
+                '}';
     }
-
 }

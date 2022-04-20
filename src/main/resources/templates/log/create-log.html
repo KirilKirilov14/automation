@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register the Log</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/logView/create}" th:object="${log}" method="post">
+        <div class="form-group">
+            <label for="logDate">Log date:</label>
+            <input class="form-control" type="text" th:field="*{logDate}" placeholder="LogDate" id="logDate">
+
+            <label for="lodDescription">Lod description:</label>
+            <input class="form-control" type="text" th:field="*{lodDescription}" placeholder="LodDescription" id="lodDescription">
+
+            <label for="logLevel">Log Level:</label>
+            <input class="form-control" type="text" th:field="*{logLevel}" placeholder="LogLevel" id="logLevel">
+
+        </div>
+        <button type="submit" class="btn btn-primary">Save Log</button>
+    </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

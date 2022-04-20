@@ -144,9 +144,16 @@ public class Log implements Serializable {
         return true;
     }
 
+
+
     @Override
     public String toString() {
-        return "com.automation.data.Log[ logId=" + logId + " ]";
+        return "Log{" +
+                "logId=" + logId +
+                ", logDate=" + logDate +
+                ", logDescription='" + logDescription + '\'' +
+                ", logLevel='" + logLevel + '\'' +
+                ", userId=" + userId +
+                '}';
     }
-
 }

@@ -42,7 +42,7 @@ public class LogImplementation implements LogService {
     }
 
     @Override
-    public void deleteLog(int id) {
+    public void deleteLogService(int id) {
         logsRepository.deleteById(id);
     }
 }

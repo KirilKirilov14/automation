@@ -39,16 +39,9 @@ public class LogApiController {
     public Log updateLog(@RequestBody Log log, @PathVariable("id") int id) {
         return logService.updateLog(log, id);
     }
-  /*  /
-**
-    *
-    *
-    *
-    *
-    *
-    /*/
+
     @DeleteMapping(value = "/delete/{id}")
-    public void deleteLog(@PathVariable("id") int id) {
-        logService.deleteLog(id);
+    public void deleteLog(@PathVariable("id") int id)    {
+        logService.deleteLogService(id);
     }
 }
