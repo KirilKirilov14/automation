@@ -16,6 +16,7 @@
         <th>Sensor max value trigger</th>
         <th>Min trigger endpoint</th>
         <th>Max trigger endpoint</th>
+        <th>Is automation rule active</th>
         <th>Edit</th>
         <th>Delete</th>
         <tr th:each="automationRule : ${automationRules}">
@@ -25,6 +26,7 @@
             <td th:text="${automationRule.sensorMaxValueTrigger}"></td>
             <td th:text="${automationRule.minTriggerEndpoint}"></td>
             <td th:text="${automationRule.maxTriggerEndpoint}"></td>
+            <td th:text="${automationRule.automationRuleActive}"></td>
 
 
             <td><a class="btn btn-info"
