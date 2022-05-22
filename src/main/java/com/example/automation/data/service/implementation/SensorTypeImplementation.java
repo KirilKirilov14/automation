@@ -42,7 +42,7 @@ public class SensorTypeImplementation implements SensorTypeService {
     }
 
     @Override
-    public void deleteSensorType(int id) {
+    public void deleteSensorTypeService(int id) {
         sensorsTypeRepository.deleteById(id);
     }
 }

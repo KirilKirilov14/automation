@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>-=</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
 
+<body>
+<header th:replace="fragments :: header"></header>
+
+<h4>Sensor list:</h4>
+<div class="col-6">
+    <a class="btn btn-success" th:href="@{'/sensorView/add'}">Add</a>
+    <h3 th:unless="${sensors} and ${sensors.size()}">There are no sensors!</h3>
+    <table th:if="${sensors.size()>0}" class="table table-hover">
+        <th>Sensor id</th>
+        <th>Sensor type id</th>
+        <th>Device id</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <tr th:each="sensor : ${sensors}">
+            <td th:text="${sensor.sensorId}"></td>
+            <td th:text="${sensor.sensorTypeId}"></td>
+            <td th:text="${sensor.deviceId}"></td>
+            <td><a class="btn btn-info"
+                   th:href="@{'/sensorView/edit/'+${sensor.sensorId}}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/sensorView/delete/'+${sensor.sensorId}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
+
+<footer th:replace="fragments :: footer"></footer>
 </html>
+</body>

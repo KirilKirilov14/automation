@@ -40,6 +40,6 @@ public class SensorTypeApiController {
 
     @DeleteMapping(value = "/delete/{id}")
     public void deleteSensorType(@PathVariable("id") int id) {
-        sensorTypeService.deleteSensorType(id);
+        sensorTypeService.deleteSensorTypeService(id);
     }
 }

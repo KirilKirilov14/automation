@@ -16,6 +16,7 @@ public class DeviceViewController {
     private final DeviceService deviceService;
     private final UserService userService;
 
+
     public DeviceViewController(DeviceService deviceService, UserService userService) {
         this.deviceService = deviceService;
         this.userService = userService;
@@ -39,6 +40,7 @@ public class DeviceViewController {
         deviceService.updateDevice(device, id);
         return "redirect:/deviceView";
     }
+
     @GetMapping("/add")
     public String showCreateDeviceForm(Model model) {
          Device device=new Device();

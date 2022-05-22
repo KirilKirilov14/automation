@@ -20,7 +20,7 @@ public class SensorApiController {
 
     @GetMapping
     public List<Sensor> getSensors() {
-        return sensorService.getSensors();
+        return sensorService.getSensorService();
     }
 
     @RequestMapping("/{id}")
@@ -40,6 +40,6 @@ public class SensorApiController {
 
     @DeleteMapping(value = "/delete/{id}")
     public void deleteSensor(@PathVariable("id") int id) {
-        sensorService.deleteSensor(id);
+        sensorService.deleteSensorService(id);
     }
 }

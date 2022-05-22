@@ -9,5 +9,5 @@ public interface SensorTypeService {
     SensorType getSensorTypeService(int id);
     SensorType createSensorType(SensorType sensorType);
     SensorType updateSensorType(SensorType sensorType, int id);
-    void deleteSensorType(int id);
+    void deleteSensorTypeService(int id);
 }

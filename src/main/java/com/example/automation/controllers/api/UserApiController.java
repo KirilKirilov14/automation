@@ -1,5 +1,4 @@
 package com.example.automation.controllers.api;
-
 import com.example.automation.data.entity.User;
 import com.example.automation.data.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +33,12 @@ public class UserApiController {
     }
 
     @PutMapping(value = "/{id}")
-    public User updateUser(@RequestBody User user, @PathVariable("id") int id) {
+    public User updateUser(@RequestBody User user, @PathVariable("id") Integer id) {
         return userService.updateUser(user, id);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
-    public void deleteUser(@PathVariable("id") int id) {
-        userService.deleteUser(id);
+    @DeleteMapping(value = "/{id}") //@DeleteMapping(value = "/delete/{id}")
+    public void deleteUser(@PathVariable("id") Integer id) {
+        userService.deleteUserService(id);
     }
 }

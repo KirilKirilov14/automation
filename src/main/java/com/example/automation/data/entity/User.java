@@ -1,105 +1,56 @@
-package com.example.automation.data.entity;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author pc
  */
+package com.example.automation.data.entity;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
 @Entity
 @Table(name = "users")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
         @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-        @NamedQuery(name = "User.findByUserFullName", query = "SELECT u FROM User u WHERE u.userFullName = :userFullName"),
-        @NamedQuery(name = "User.findByUserLogIn", query = "SELECT u FROM User u WHERE u.userLogIn = :userLogIn"),
-        @NamedQuery(name = "User.findByUserPass", query = "SELECT u FROM User u WHERE u.userPass = :userPass"),
-        @NamedQuery(name = "User.findByUserCreateDate", query = "SELECT u FROM User u WHERE u.userCreateDate = :userCreateDate"),
-        @NamedQuery(name = "User.findByUserAdmin", query = "SELECT u FROM User u WHERE u.userAdmin = :userAdmin")})
-public class User implements Serializable {
+        @NamedQuery(name = "User.findByUserName", query = "SELECT u FROM User u WHERE u.username = :username")})
 
+public class User implements Serializable, UserDetails  {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "user_id")
     private Integer userId;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "user_full_name")
-    private String userFullName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "user_log_in")
-    private String userLogIn;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "user_pass")
-    private String userPass;
-    @Column(name = "user_create_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date userCreateDate;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "user_admin")
-    private boolean userAdmin;
+    @Column(name = "user_name")
+    private String username;
+    @Column(name = "user_password")
+    private String password;
+    @Column(name = "is_account_non_expired")
+    private boolean isAccountNonExpired;
+    @Column(name = "is_account_non_locked")
+    private boolean isAccountNonLocked;
+    @Column(name = "is_credentials_non_expired")
+    private boolean isCredentialsNonExpired;
+    @Column(name = "is_enabled")
+    private boolean isEnabled;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> authorities;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private List<Device> deviceList;
-
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private List<Log> logList;
-
-    public User() {
-    }
+    public User() {}
 
     public User(Integer userId) {
         this.userId = userId;
     }
-
-    public User(Integer userId, String userFullName, String userLogIn, String userPass, boolean userAdmin) {
-        this.userId = userId;
-        this.userFullName = userFullName;
-        this.userLogIn = userLogIn;
-        this.userPass = userPass;
-        this.userAdmin = userAdmin;
-    }
-
     public Integer getUserId() {
         return userId;
     }
@@ -108,64 +59,67 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public String getUserFullName() {
-        return userFullName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserFullName(String userFullName) {
-        this.userFullName = userFullName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUserLogIn() {
-        return userLogIn;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserLogIn(String userLogIn) {
-        this.userLogIn = userLogIn;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUserPass() {
-        return userPass;
+    @Override
+    public boolean isAccountNonExpired() {
+        return isAccountNonExpired;
     }
 
-    public void setUserPass(String userPass) {
-        this.userPass = userPass;
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        isAccountNonExpired = accountNonExpired;
     }
 
-    public Date getUserCreateDate() {
-        return userCreateDate;
+    @Override
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
     }
 
-    public void setUserCreateDate(Date userCreateDate) {
-        this.userCreateDate = userCreateDate;
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        isAccountNonLocked = accountNonLocked;
     }
 
-    public boolean getUserAdmin() {
-        return userAdmin;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return isCredentialsNonExpired;
     }
 
-    public void setUserAdmin(boolean userAdmin) {
-        this.userAdmin = userAdmin;
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        isCredentialsNonExpired = credentialsNonExpired;
     }
 
-    @XmlTransient
-    public List<Device> getDeviceList() {
-        return deviceList;
+    @Override
+    public boolean isEnabled() {
+        return isEnabled;
     }
 
-    public void setDeviceList(List<Device> deviceList) {
-        this.deviceList = deviceList;
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 
-    @XmlTransient
-    public List<Log> getLogList() {
-        return logList;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 
-    public void setLogList(List<Log> logList) {
-        this.logList = logList;
+    public void setAuthorities(Set<Role> authorities) {
+        this.authorities = authorities;
     }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -188,7 +142,11 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.automation.data.User[ userId=" + userId + " ]";
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", authorities=" + authorities +
+                '}';
     }
-
 }

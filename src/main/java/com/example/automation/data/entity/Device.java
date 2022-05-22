@@ -4,7 +4,6 @@ package com.example.automation.data.entity;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;

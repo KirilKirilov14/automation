@@ -5,10 +5,10 @@ import com.example.automation.data.entity.Sensor;
 import java.util.List;
 
 public interface SensorService {
-    List<Sensor> getSensors();
+    List<Sensor> getSensorService();
     Sensor getSensorService(int id);
     Sensor createSensor(Sensor sensor);
     Sensor updateSensor(Sensor sensor, int id);
-    void deleteSensor(int id);
+    void deleteSensorService(int id);
 
 }

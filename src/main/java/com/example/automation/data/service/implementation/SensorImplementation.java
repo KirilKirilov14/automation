@@ -19,7 +19,7 @@ public class SensorImplementation implements SensorService {
     }
 
     @Override
-    public List<Sensor> getSensors() {
+    public List<Sensor> getSensorService() {
         return sensorsRepository.findAll();
     }
 
@@ -30,19 +30,19 @@ public class SensorImplementation implements SensorService {
     }
 
     @Override
-    public Sensor createSensor(Sensor device) {
-        return sensorsRepository.save(device);
+    public Sensor createSensor(Sensor sensor) {
+        return sensorsRepository.save(sensor);
     }
 
     @Override
-    public Sensor updateSensor(Sensor device, int id) {
-        device.setSensorId(id);
+    public Sensor updateSensor(Sensor sensor, int id) {
+        sensor.setSensorId(id);
 
-        return sensorsRepository.save(device);
+        return sensorsRepository.save(sensor);
     }
 
     @Override
-    public void deleteSensor(int id) {
+    public void deleteSensorService(int id) {
         sensorsRepository.deleteById(id);
     }
 }

@@ -29,7 +29,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author pc
  */
 @Entity
@@ -143,7 +142,6 @@ public class Log implements Serializable {
         }
         return true;
     }
-
 
 
     @Override

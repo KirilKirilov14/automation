@@ -8,18 +8,16 @@
 <h4>Log list:</h4>
 <div class="col-6">
     <a class="btn btn-success" th:href="@{'/logView/add'}">Add</a>
-    <h3 th:unless="${logs} and ${logs.size()}">There are no Automation Rules!</h3>
+    <h3 th:unless="${logs} and ${logs.size()}">There are no Logs!</h3>
     <table th:if="${logs.size()>0}" class="table table-hover">
 
-        <th>id</th>
+        <th>Id</th>
         <th>Log date</th>
         <th>Log description</th>
         <th>Log level</th>
-        
         <th>Edit</th>
         <th>Delete</th>
         <tr th:each="log : ${logs}">
-
             <td th:text="${log.logId}"></td>
             <td th:text="${log.logDate}"></td>
             <td th:text="${log.logDescription}"></td>

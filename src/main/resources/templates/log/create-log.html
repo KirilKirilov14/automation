@@ -7,11 +7,12 @@
 <div class="col-6">
     <form action="#" th:action="@{/logView/create}" th:object="${log}" method="post">
         <div class="form-group">
+
             <label for="logDate">Log date:</label>
             <input class="form-control" type="text" th:field="*{logDate}" placeholder="LogDate" id="logDate">
 
-            <label for="lodDescription">Lod description:</label>
-            <input class="form-control" type="text" th:field="*{lodDescription}" placeholder="LodDescription" id="lodDescription">
+            <label for="logDescription">Log description:</label>
+            <input class="form-control" type="text" th:field="*{logDescription}" placeholder="LogDescription" id="logDescription">
 
             <label for="logLevel">Log Level:</label>
             <input class="form-control" type="text" th:field="*{logLevel}" placeholder="LogLevel" id="logLevel">

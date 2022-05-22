@@ -34,7 +34,7 @@ public class AutomationRuleViewController {
     @GetMapping("/edit/{id}")
     public String showEditAutomationRule(Model model, @PathVariable Integer id) {
         model.addAttribute("automationRule", automationRuleService.getAutomationRuleService(id));
-        model.addAttribute("sensors",sensorService.getSensors());
+        model.addAttribute("sensors",sensorService.getSensorService());
         return "/automationRule/edit-automationRule";
     }
 
@@ -47,7 +47,7 @@ public class AutomationRuleViewController {
     public String showCreateAutomationRuleForm(Model model) {
         AutomationRule automationRule=new AutomationRule();
         model.addAttribute("automationRule",automationRule);
-        model.addAttribute("sensors",sensorService.getSensors());
+        model.addAttribute("sensors",sensorService.getSensorService());
         return "/automationRule/create-automationRule";
     }
 

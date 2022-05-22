@@ -39,27 +39,28 @@ public class LogViewController {
         logService.updateLog(log, id);
         return "redirect:/logView";
     }
+
     @GetMapping("/add")
     public String showCreateLogForm(Model model) {
-        Log log=new Log();
-        model.addAttribute("log",log);
+        Log log = new Log();
+        model.addAttribute("log", log);
         return "/log/create-log";
     }
+       /* @GetMapping("/add")
+        public String showCreateAutomationRuleForm(Model model) {
+            Log log=new Log();
+            model.addAttribute("log",log);
 
-    //    @GetMapping("/add")
-    //    public String showCreateAutomationRuleForm(Model model) {
-    //        AutomationRule automationRule=new AutomationRule();
-    //        model.addAttribute("automationRule",automationRule);
-    //        model.addAttribute("sensors",sensorService.getSensors());
-    //        return "/automationRule/create-automationRule";
-    //    }//
+            return "/log/create-log";
+        }*/
 
     @PostMapping("/create")
     public String createLog(Model model, Log log) {
+        User userId = userService.getUserService(1);
+        log.setUserId(userId);
         logService.createLog(log);
         return "redirect:/logView";
     }
-
 
     //    @PostMapping("/create")
     //    public String createAutomationRule(Model model, AutomationRule automationRule) {

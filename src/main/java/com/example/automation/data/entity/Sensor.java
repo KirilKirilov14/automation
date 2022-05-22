@@ -24,7 +24,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author pc
  */
 @Entity
@@ -33,6 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
         @NamedQuery(name = "Sensor.findAll", query = "SELECT s FROM Sensor s"),
         @NamedQuery(name = "Sensor.findBySensorId", query = "SELECT s FROM Sensor s WHERE s.sensorId = :sensorId")})
+
+
 public class Sensor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,20 +48,22 @@ public class Sensor implements Serializable {
     @ManyToOne
     private Device deviceId;
 
- /*   @JoinColumn(name = "sensor_type_id", referencedColumnName = "sensor_type_id")
+    @JoinColumn(name = "sensor_type_id", referencedColumnName = "sensor_type_id")
     @JsonIgnoreProperties("")
     @ManyToOne(optional = false)
-    private SensorType sensorType;*/
- @JoinColumn(name = "sensor_type_id", referencedColumnName = "sensor_type_id")
- @ManyToOne(optional = false)
- @JsonIgnoreProperties("")
- private SensorType sensorTypeId;
+    private SensorType sensorTypeId;
 
     public Sensor() {
     }
 
     public Sensor(Integer sensorId) {
         this.sensorId = sensorId;
+    }
+
+    public Sensor(Integer sensorId, Device deviceId, SensorType sensorTypeId) {
+        this.sensorId = sensorId;
+        this.deviceId = deviceId;
+        this.sensorTypeId = sensorTypeId;
     }
 
     public Integer getSensorId() {
@@ -109,7 +112,10 @@ public class Sensor implements Serializable {
 
     @Override
     public String toString() {
-        return "com.automation.data.Sensor[ sensorId=" + sensorId + " ]";
+        return "Sensor{" +
+                "sensorId=" + sensorId +
+                ", deviceId=" + deviceId +
+                ", sensorTypeId=" + sensorTypeId +
+                '}';
     }
-
 }
