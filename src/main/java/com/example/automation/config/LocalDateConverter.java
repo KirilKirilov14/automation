@@ -1,4 +1,4 @@
-package config;
+package com.example.automation.config;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

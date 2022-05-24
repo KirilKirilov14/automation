@@ -67,7 +67,6 @@ public class Device implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "end_point")
     private String endPoint;
-
     @OneToMany(mappedBy = "deviceId")
     @JsonIgnore
     private List<Sensor> sensorList;

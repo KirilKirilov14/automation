@@ -4,5 +4,5 @@ import com.example.automation.data.entity.Device;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DeviceRepository extends JpaRepository<Device, Integer> {
-
+Device findByDeviceName(String deviceName);
 }

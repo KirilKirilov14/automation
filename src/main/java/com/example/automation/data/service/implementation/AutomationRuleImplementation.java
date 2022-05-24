@@ -2,7 +2,6 @@ package com.example.automation.data.service.implementation;
 import SpringHttpClient.RestClient;
 import com.example.automation.data.entity.AutomationRule;
 import com.example.automation.data.entity.Sensor;
-import com.example.automation.data.entity.SensorDataPacket;
 import com.example.automation.data.repository.AutomationRuleRepository;
 import com.example.automation.data.service.AutomationRuleService;
 import org.springframework.stereotype.Service;

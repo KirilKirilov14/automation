@@ -1,7 +1,10 @@
-package com.example.automation.data.entity;
+package com.example.automation.data.model;
+
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class SensorDataPacket {
 
     private String deviceKey;
@@ -13,6 +16,8 @@ public class SensorDataPacket {
         this.userid = userid;
         this.sensorData = sensorData;
     }
+
+    public SensorDataPacket(){}
 
     public String getDeviceKey() {
         return deviceKey;

@@ -36,14 +36,14 @@ public class IndexController {
 
     @GetMapping("login")
     public String login(Model model) {
-        final String welcomeMessage = "Welcome to my ornithology app!";
+        final String welcomeMessage = "Welcome to my automation app!";
         model.addAttribute("welcome", welcomeMessage);
         return "login";
     }
 
     @GetMapping("unauthorized")
     public String unauthorized(Model model) {
-        final String welcomeMessage = "Welcome to my ornithology app!";
+        final String welcomeMessage = "Welcome to my automation app!";
         model.addAttribute("welcome", welcomeMessage);
         return "unauthorized";
     }
