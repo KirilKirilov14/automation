@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments :: head"></head>
 
 <body>
@@ -7,7 +7,7 @@
 
 <h4>Automation Rule list:</h4>
 <div class="col-6">
-    <a class="btn btn-success" th:href="@{'/automationRuleView/add'}">Add</a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'USER')" class="btn btn-success" th:href="@{'/automationRuleView/add'}">Add</a>
     <h3 th:unless="${automationRules} and ${automationRules.size()}">There are no Automation Rules!</h3>
     <table th:if="${automationRules.size()>0}" class="table table-hover">
 
@@ -17,8 +17,8 @@
         <th>Min trigger endpoint</th>
         <th>Max trigger endpoint</th>
         <th>Is automation rule active</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Edit</th>
+        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Delete</th>
         <tr th:each="automationRule : ${automationRules}">
 
             <td th:text="${automationRule.automationRuleId}"></td>
@@ -29,9 +29,8 @@
             <td th:text="${automationRule.automationRuleActive}"></td>
 
 
-            <td><a class="btn btn-info"
-                   th:href="@{'/automationRuleView/edit/'+${automationRule.automationRuleId}}">Edit</a></td>
-            <td><a class="btn btn-danger" th:href="@{'/automationRuleView/delete/'+${automationRule.automationRuleId}}">Delete</a>
+            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-info" th:href="@{'/automationRuleView/edit/'+${automationRule.automationRuleId}}">Edit</a></td>
+            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-danger" th:href="@{'/automationRuleView/delete/'+${automationRule.automationRuleId}}">Delete</a>
             </td>
         </tr>
     </table>

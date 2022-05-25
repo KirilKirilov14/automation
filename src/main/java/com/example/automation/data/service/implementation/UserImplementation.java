@@ -25,7 +25,7 @@ public class UserImplementation implements UserService {
         }
 
     @Override
-    public User getUserService(Integer id) {
+    public User getUserService(int id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
     }
@@ -35,15 +35,16 @@ public class UserImplementation implements UserService {
         return userRepository.save(user);
     }
 
+
     @Override
-    public User updateUser(User user, Integer id) {
+    public User updateUser(User user, int id) {
         user.setUserId(id);
 
         return userRepository.save(user);
     }
 
     @Override
-    public void deleteUserService(Integer id) {
+    public void deleteUserService(int id) {
         userRepository.deleteById(id);
     }
 

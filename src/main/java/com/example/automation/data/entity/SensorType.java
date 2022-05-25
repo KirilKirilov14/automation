@@ -88,6 +88,7 @@ public class SensorType implements Serializable {
         return sensorType;
     }
 
+
     public void setSensorType(String sensorType) {
         this.sensorType = sensorType;
     }

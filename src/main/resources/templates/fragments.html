@@ -16,6 +16,7 @@ and open the template in the editor.
         <div class="col-9"><h3>Automation System</h3></div>
         <div class="col-3">
             <h5 sec:authentication="principal.username"></h5>
+
             <a class="btn" th:href="@{/logout}">Logout</a>
         </div>
     </div>
@@ -43,11 +44,15 @@ and open the template in the editor.
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/sensorTypeView">SensorTypes</a>
+                    <a class="nav-link" href="/sensorTypeView">Sensor Types</a>
                 </li>
 
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
-                    <a class="nav-link" href="/userView">User</a>
+                    <a class="nav-link" href="/userView">Users</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/sensorDataView">Sensor Data</a>
                 </li>
 
             </ul>
@@ -56,7 +61,7 @@ and open the template in the editor.
 </header>
 
 <footer page-footer font-small>
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <div class="footer-copyright text-center py-3">© 2022 Copyright:
         <a href="/">Automation System</a>
     </div>
 </footer>

@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: head"></head>
 
+<body>
+<header th:replace="fragments :: header"></header>
+
+<h4>SensorType list:</h4>
+<div class="col-6">
+    <a sec:authorize="hasAnyAuthority('ADMIN','USER')" class="btn btn-success" th:href="@{'/sensorTypeView/add'}">Add</a>
+    <h3 th:unless="${sensorTypes} and ${sensorTypes.size()}">There are no sensorTypes!</h3>
+    <table th:if="${sensorTypes.size()>0}" class="table table-hover">
+        <th>Id</th>
+        <th>Sensor Type</th>
+        <th>Sensor Data Type</th>
+        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Edit</th>
+        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Delete</th>
+        <tr th:each="sensorType : ${sensorTypes}">
+            <td th:text="${sensorType.sensorTypeId}"></td>
+            <td th:text="${sensorType.sensorType}"></td>
+            <td th:text="${sensorType.sensorDataType}"></td>
+            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-info" th:href="@{'/sensorTypeView/edit/'+${sensorType.sensorTypeId}}">Edit</a></td>
+            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-danger" th:href="@{'/sensorTypeView/delete/'+${sensorType.sensorTypeId}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
+
+<footer th:replace="fragments :: footer"></footer>
 </html>
+</body>
