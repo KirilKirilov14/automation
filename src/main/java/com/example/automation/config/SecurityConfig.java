@@ -53,6 +53,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/sensorView/create/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/sensorView/delete/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/sensorView/edit/**").hasAnyAuthority("ADMIN", "USER")
+
+
+                .antMatchers("/sensorDataView/**").hasAnyAuthority("ADMIN", "USER")
                 .and()
                 .formLogin()
                 .loginPage("/login")

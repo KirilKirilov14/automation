@@ -11,14 +11,14 @@
     <h3 th:unless="${sensors} and ${sensors.size()}">There are no sensors!</h3>
     <table th:if="${sensors.size()>0}" class="table table-hover">
         <th>Sensor id</th>
-        <th>Sensor type id</th>
-        <th>Device id</th>
+<!--        <th>Sensor type id</th>-->
+        <th>Device type</th>
         <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Edit</th>
         <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Delete</th>
         <tr th:each="sensor : ${sensors}">
             <td th:text="${sensor.sensorId}"></td>
-            <td th:text="${sensor.sensorTypeId}"></td>
-            <td th:text="${sensor.deviceId}"></td>
+<!--            <td th:text="${sensor.sensorTypeId.sensorType}"></td>-->
+            <td th:text="${sensor.deviceId.deviceType}"></td>
             <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-info" th:href="@{'/sensorView/edit/'+${sensor.sensorId}}">Edit</a></td>
             <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-danger" th:href="@{'/sensorView/delete/'+${sensor.sensorId}}">Delete</a>
             </td>

@@ -7,20 +7,20 @@
 
 <h4>SensorData list:</h4>
 <div class="col-6">
-    <a sec:authorize="hasAnyAuthority('ADMIN','USER')" class="btn btn-success" th:href="@{'/sensorDataView/add'}">Add</a>
+    <!--<a sec:authorize="hasAnyAuthority('ADMIN','USER')" class="btn btn-success" th:href="@{'/sensorDataView/add'}">Add</a>-->
     <h3 th:unless="${sensorData} and ${sensorData.size()}">There are no sensor Data!</h3>
     <table th:if="${sensorData.size()>0}" class="table table-hover">
         <th>Sensor Data Id</th>
         <th>Sensor Value</th>
-        <th>Sensor Id</th>
-        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Edit</th>
-        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Delete</th>
-        <tr th:each="sensorData : ${sensorData}">
+       <!-- <th>Sensor Id</th>-->
+<!--        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Edit</th>-->
+<!--        <th sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Delete</th>-->
+            <tr th:each="sensorData : ${sensorData}">
             <td th:text="${sensorData.sensorDataId}"></td>
             <td th:text="${sensorData.sensorValue}"></td>
-            <td th:text="${sensorData.sensorId}"></td>
-            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-info" th:href="@{'/sensorDataView/edit/'+${sensorData.sensorDataId}}">Edit</a></td>
-            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-danger" th:href="@{'/sensorDataView/delete/'+${sensorData.sensorDataId}}">Delete</a>
+           <!-- <td th:text="${sensorData.sensorId}"></td>-->
+<!--            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-info" th:href="@{'/sensorDataView/edit/'+${sensorData.sensorDataId}}">Edit</a></td>-->
+<!--            <td sec:authorize="hasAnyAuthority('ADMIN', 'USER')"><a class="btn btn-danger" th:href="@{'/sensorDataView/delete/'+${sensorData.sensorDataId}}">Delete</a>-->
             </td>
         </tr>
     </table>

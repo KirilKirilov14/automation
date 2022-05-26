@@ -16,13 +16,10 @@ public class SensorData {
     @Column(name = "sensor_data_id")
     private Integer sensorDataId;
 
-
     @NotNull
     @Size(min = 1, max = 2147483647)
     @Column(name = "sensor_value")
     private String sensorValue;
-
-
 
     @JoinColumn(name = "sensor_id", referencedColumnName = "sensor_id")
     @ManyToOne(optional = false)

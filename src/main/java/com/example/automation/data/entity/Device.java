@@ -169,16 +169,5 @@ public class Device implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Device{" +
-                "deviceId=" + deviceId +
-                ", deviceName='" + deviceName + '\'' +
-                ", deviceLocation='" + deviceLocation + '\'' +
-                ", deviceType='" + deviceType + '\'' +
-                ", endPoint='" + endPoint + '\'' +
-                ", sensorList=" + sensorList +
-                ", userId=" + userId +
-                '}';
-    }
+
 }
